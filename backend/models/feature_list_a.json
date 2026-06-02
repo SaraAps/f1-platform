@@ -1,0 +1,15 @@
+[
+  "grid_position",
+  "season",
+  "total_race_laps",
+  "is_street_circuit",
+  "driver_rolling_avg_3",
+  "driver_rolling_avg_5",
+  "driver_dnf_rate_season",
+  "driver_encoded",
+  "constructor_rolling_avg_points_3",
+  "constructor_season_points",
+  "team_encoded",
+  "compound_encoded",
+  "is_wet_race"
+]

@@ -1,0 +1,51 @@
+{
+  "trained_on": "2022-2024",
+  "evaluated_on": "2025",
+  "train_date": "2026-06-01",
+  "model_type": "Random Forest Regressor (n=500)",
+  "rf_params": {
+    "n_estimators": 500,
+    "max_depth": null,
+    "min_samples_leaf": 2,
+    "max_features": "sqrt",
+    "random_state": 42,
+    "n_jobs": -1
+  },
+  "model_a": {
+    "name": "Pre-race Forecasting Model",
+    "pickle": "model_a.pkl",
+    "feature_list": "feature_list_a.json",
+    "imputer": "pre_race_imputer.pkl",
+    "features": 13,
+    "test_mae": 3.332,
+    "test_r2": 0.44,
+    "spearman_r": 0.643,
+    "within_3": 0.62,
+    "within_5": 0.849
+  },
+  "model_b": {
+    "name": "Full Race Reconstruction Model",
+    "pickle": "model_b.pkl",
+    "feature_list": "feature_list_b.json",
+    "imputer": "imputer.pkl",
+    "features": 24,
+    "test_mae": 2.545,
+    "test_r2": 0.646,
+    "spearman_r": 0.803,
+    "within_3": 0.775,
+    "within_5": 0.914
+  },
+  "baselines": {
+    "grid_position_mae": 3.347,
+    "mean_prediction_mae": 4.962
+  },
+  "inference_protocol": "raw row -> select feature_list -> imputer.transform -> model.predict",
+  "notes": [
+    "Model A uses only pre-race features \u2014 true forecasting (does not reliably beat the grid baseline).",
+    "Model B uses in-race features \u2014 race reconstruction and SHAP explainability.",
+    "driver_encoded and team_encoded are label integers from encoders.pkl (partly memorisation).",
+    "2025 rookies (ANT, BOR, HAD) map to the median training driver code at debut.",
+    "is_wet_race in Model A is a pre-race weather-forecast proxy assumption.",
+    "Pit-lane starts are encoded as grid_position=21 (no separate pit_lane_start feature)."
+  ]
+}
